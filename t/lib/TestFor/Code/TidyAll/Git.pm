@@ -22,6 +22,8 @@ $ENV{GIT_AUTHOR_EMAIL} = $ENV{GIT_COMMITTER_EMAIL} = 'git-author@example.com';
 sub test_git : Tests {
     my ($self) = @_;
 
+    return unless $self->require_executable('git');
+
     my ( $temp_dir, $work_dir, $pushd ) = $self->_make_working_dir_and_repo;
 
     subtest 'add foo.txt', sub {
@@ -138,6 +140,8 @@ sub _quote_for_win32 {
 sub test_copied_status : Tests {
     my ($self) = @_;
 
+    return unless $self->require_executable('git');
+
     my ( $temp_dir, $work_dir, $pushd ) = $self->_make_working_dir_and_repo;
 
     my $foo_file = $work_dir->child('foo.txt');
@@ -164,6 +168,8 @@ sub test_copied_status : Tests {
 
 sub test_precommit_stash_issues : Tests {
     my ($self) = @_;
+
+    return unless $self->require_executable('git');
 
     my ( $temp_dir, $work_dir, $pushd ) = $self->_make_working_dir_and_repo;
 
