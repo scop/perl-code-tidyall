@@ -15,7 +15,7 @@ stages:
     parameters:
       coverage: codecov
       debug: true
-      use_default_perls: true
+      perls: ["5.30"]
       apt:
         - aspell
         - aspell-en
@@ -29,9 +29,9 @@ stages:
   - template: templates/helpers/macos.yml@ci-perl-helpers
     parameters:
       debug: true
-      use_default_perls: true
+      perls: ["5.30"]
 
   - template: templates/helpers/windows.yml@ci-perl-helpers
     parameters:
       debug: true
-      use_default_perls: true
+      perls: ["5.30"]
