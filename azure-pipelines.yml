@@ -40,6 +40,9 @@ stages:
     parameters:
       debug: true
       perls: ["5.30"]
+      brew:
+        - aspell
+        - ispell
       extra_prereqs:
         - Mason::Tidy
         - Perl::Critic
