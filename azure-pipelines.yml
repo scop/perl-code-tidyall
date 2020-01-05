@@ -3,6 +3,7 @@ resources:
     - repository: ci-perl-helpers
       type: github
       name: houseabsolute/ci-perl-helpers
+      ref: refs/heads/custom-modules
       endpoint: houseabsolute/ci-perl-helpers
 
 stages:
@@ -10,12 +11,20 @@ stages:
   - template: templates/helpers/build.yml@ci-perl-helpers
     parameters:
       debug: true
+      image_version: custom-modules
 
   - template: templates/helpers/linux.yml@ci-perl-helpers
     parameters:
       coverage: codecov
       debug: true
       perls: ["5.30"]
+      extra_prereqs:
+        - Mason::Tidy
+        - Perl::Critic
+        - Perl::Tidy
+        - Perl::Tidy::Sweetened
+        - Pod::Spell
+        - Pod::Tidy
       apt:
         - aspell
         - aspell-en
@@ -25,13 +34,29 @@ stages:
         - php-cli
         - php-xml
         - subversion
+      image_version: custom-modules
 
   - template: templates/helpers/macos.yml@ci-perl-helpers
     parameters:
       debug: true
       perls: ["5.30"]
+      extra_prereqs:
+        - Mason::Tidy
+        - Perl::Critic
+        - Perl::Tidy
+        - Perl::Tidy::Sweetened
+        - Pod::Spell
+        - Pod::Tidy
 
   - template: templates/helpers/windows.yml@ci-perl-helpers
     parameters:
       debug: true
       perls: ["5.30"]
+      extra_prereqs:
+        - Mason::Tidy
+        - Perl::Critic
+        - Perl::Tidy
+        - Perl::Tidy::Sweetened
+        - Pod::Spell
+        - Pod::Tidy
+
